@@ -1,0 +1,211 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #f0f0f0;
+  background-color: #0a0a0a;
+  line-height: 1.7;
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 15px 40px;
+  z-index: 100;
+  transition: 0.3s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(10, 10, 10, 0.95);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #f0f0f0;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+  color: #ffffff;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+    url("images/hero-bg.jpg") center/cover no-repeat;
+  text-align: center;
+  padding: 160px 20px 100px;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  color: #ccc;
+  font-size: 1.1rem;
+}
+
+/* Policy Section */
+.policy {
+  background: url("images/terms-bg.jpg") center/cover fixed no-repeat;
+  padding: 80px 20px;
+  position: relative;
+}
+
+.policy::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.85);
+}
+
+.policy > * {
+  position: relative;
+  z-index: 2;
+}
+
+.policy-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  max-width: 900px;
+  margin-inline: auto;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+.policy-card.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.policy-card h3 {
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.policy-card p,
+.policy-card li {
+  color: #ddd;
+  font-size: 1rem;
+}
+
+.policy-card ul {
+  padding-left: 20px;
+  list-style: disc;
+  margin-bottom: 10px;
+}
+
+.policy p a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.policy p a:hover {
+  text-decoration: underline;
+}
+
+.policy p:last-child {
+  text-align: center;
+  color: #aaa;
+  margin-top: 40px;
+}
+
+/* Footer */
+.footer {
+  background: #050505;
+  text-align: center;
+  padding: 60px 20px;
+  border-top: 1px solid #111;
+}
+
+.footer h2 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.download-row img {
+  height: 45px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.download-row img:hover {
+  transform: scale(1.1);
+}
+
+.socials img {
+  height: 28px;
+  margin: 15px 8px;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.socials img:hover {
+  opacity: 1;
+}
+
+.footer a {
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .policy-card {
+    padding: 20px;
+  }
+}

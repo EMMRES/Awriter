@@ -1,0 +1,153 @@
+/* ===== Reset & Base ===== */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)),
+    url("../images/Group\ 55.png") no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Sticky Header ===== */
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0.8rem 3%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 0.6rem 3%;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.logo h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.8rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: #232323;
+}
+
+/* ===== Header Section ===== */
+.faq-header {
+  text-align: center;
+  padding: 8rem 1rem 2rem;
+}
+
+.faq-header h1 {
+  font-size: 2.8rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.faq-header p {
+  color: #ccc;
+  font-size: 1.1rem;
+}
+
+/* ===== FAQ Section ===== */
+.faq-container {
+  max-width: 900px;
+  margin: 2rem auto 5rem;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2.5rem;
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+}
+
+/* FAQ Item */
+.faq-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.faq-item h2 {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-item h2::after {
+  content: "+";
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active h2::after {
+  transform: rotate(45deg);
+  color: hsl(180, 2%, 12%);
+}
+
+.faq-item p {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
+  color: #ddd;
+}
+
+.faq-item.active p {
+  max-height: 300px;
+  opacity: 1;
+}
+
+/* ===== Footer ===== */
+.faq-footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(0, 0, 0, 0.75);
+  color: #bbb;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}

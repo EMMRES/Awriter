@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ - AWriter</title>
+  <link rel="stylesheet" href="css/faq.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="logo">
+      <img src="images/Nextel tech.svg" alt="AWriter Logo" />
+      <h2>AWriter</h2>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Terms.html">Terms</a></li>
+         <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+        <li><a href="faq.html" class="active">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- FAQ Section -->
+  <section class="faq-header">
+    <h1>Frequently Asked Questions</h1>
+    <p>Everything you need to know about AWriter</p>
+  </section>
+
+  <section class="faq-container">
+    <div class="faq-item">
+      <h2>What is the main purpose of Awriter?</h2>
+      <p>Awriter is a writer-focused app that helps you outline stories, structure chapters, and organize your writing in ways that fit top publishing platforms — all without AI-generated content. It’s your personal guide to planning your story effectively.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>Who is Awriter for?</h2>
+      <p>Whether you’re an aspiring or experienced writer, writing for online platforms or personal projects, Awriter is built to support you. It works perfectly for authors creating romance, thriller, fantasy, or any genre stories.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>Can AWriter help with writer’s block?</h2>
+      <p>Definitely! AWriter provides chapter start ideas, cliffhanger suggestions, structure tips, and prompts designed to spark creativity and push past those tough moments when the words just won’t come.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>Does AWriter write my stories for me?</h2>
+      <p>No! Awriter doesn’t generate stories. Instead, it offers smart tools, detailed outline formats, and writing suggestions so you stay inspired and organized while writing your own original content.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>Which platforms does AWriter support?</h2>
+      <p>AWriter includes customized outline templates for popular platforms like Dreame, GoodNovel, Alphanovel, PocketFM, and more, so your story fits what each platform wants.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>Is AWriter free to use?</h2>
+      <p>You can start with a free plan that includes basic outlining tools and suggestions. For full access to all features and premium content, we offer affordable subscription options.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>Can I use AWriter for my personal writing projects?</h2>
+      <p>Absolutely! AWriter is designed for every kind of writer, whether you’re publishing on apps or writing purely for yourself. Keep your stories organized and clear, no matter the goal.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>How do I get started with AWriter?</h2>
+      <p>Simply download the app, sign up, and start outlining your story using our easy-to-follow formats. We guide you step-by-step so you can focus on creativity without the overwhelm.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>Can I share my outlines directly from the app?</h2>
+      <p>Yes! You can export your outlines in different formats to submit to publishers or share with writing partners — all from within AWriter.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>Who is the founder of AWriter?</h2>
+      <p>AWriter was created by Amina Sb, a successful writer who wanted to build a tool that truly helps authors plan and structure their stories for top publishing platforms — without relying on AI to write the story for them.</p>
+    </div>
+
+    <div class="faq-item">
+      <h2>What if I need help or have questions?</h2>
+      <p>We’re here for you! Reach out anytime through the app’s support section or email our team directly for assistance and feedback.</p>
+    </div>
+  </section>
+
+  <footer class="faq-footer">
+    <p>© 2025 Awriter. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.site-header');
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // FAQ accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

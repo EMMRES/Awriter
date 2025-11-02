@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AWriter — Turn Your Rejections To Contract</title>
+  <link rel="icon" href="images/Nextel tech.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo-link">
+      <img src="images/Untitled design (3).png" alt="AWriter logo" class="logo" />
+    </a>
+
+    <!-- Hamburger -->
+    <button id="menu-toggle" class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- Navigation -->
+    <nav>
+      <ul id="nav-list" class="nav-list">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="Terms.html">Terms</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- offset for fixed header -->
+<div class="top-band"></div>
+
+<main>
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-inner">
+      <p class="eyebrow">AWriter app</p>
+      <h1 class="hero-title">Turn Your Rejections To Contract</h1>
+      <p class="hero-sub">Analyze your chapters and outline to perfect them for your preferred platform</p>
+
+      <div class="download-row">
+        <a href="#" class="btn btn-filled">Playstore</a>
+        <a href="#" class="btn btn-outline">App store</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- phone mockups -->
+  <section class="mockups">
+    <div class="container center">
+      <img src="images/Group 55.png" alt="App mockups" class="phones" />
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how-it-works" class="how">
+    <div class="container">
+      <h2 class="section-title">How the app works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-img">
+            <img src="images/Nextel tech (73).png" alt="Create account" />
+          </div>
+          <div class="step-content">
+            <h3>Create/login to an existing account to get started</h3>
+            <p>An account is created with your email and a desired password</p>
+          </div>
+        </div>
+
+        <div class="step reverse">
+          <div class="step-img">
+            <img src="images/Nextel tech (75).png" alt="Write freely" />
+          </div>
+          <div class="step-content">
+            <h3>Write freely in a clean, distraction-free space</h3>
+            <p>Organize your stories from idea to final draft</p>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step-img">
+            <img src="images/Nextel tech (74).png" alt="Feedback" />
+          </div>
+          <div class="step-content">
+            <h3>Get Tailored feedback on your chapters & outlines</h3>
+            <p>When you’re done get a tailored feedback that matches your needs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download CTA -->
+  <section class="download-cta">
+    <div class="download-bg"></div>
+    <div class="container cta-inner">
+      <h2>Download the app now.</h2>
+      <p>Available on your favorite store. Start your premium experience now.</p>
+      <div class="download-row cta-row">
+        <a href="#" class="btn btn-filled">Playstore</a>
+        <a href="#" class="btn btn-outline">App store</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-col">
+        <img src="images/Nextel tech (72).png" alt="AWriter logo" class="footer-logo">
+        <p>AWriter helps writers perfect their craft by analyzing chapters and outlines to match platform standards.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="Terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="socials">
+          <a href="#"><img src="images/twitter.svg" alt="Twitter"></a>
+          <a href="#"><img src="images/facebook.svg" alt="Facebook"></a>
+          <a href="#"><img src="images/instagram.svg" alt="Instagram"></a>
+          <a href="#"><img src="images/linkedin.svg" alt="LinkedIn"></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 AWriter. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky Header
+  window.addEventListener('scroll', () => {
+    const header = document.querySelector('.site-header');
+    if (window.scrollY > 20) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  });
+
+  // Hamburger Menu
+  const menuToggle = document.getElementById('menu-toggle');
+  const navList = document.getElementById('nav-list');
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = navList.classList.toggle('open');
+    menuToggle.classList.toggle('active', isOpen);
+    menuToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close when clicking a link
+  document.querySelectorAll('#nav-list a').forEach(link => {
+    link.addEventListener('click', () => {
+      navList.classList.remove('open');
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+</body>
+</html>
