@@ -1,344 +1,386 @@
-/* ========== GLOBAL STYLES ========== */
+/* =================================
+   1. GLOBAL STYLES & VARIABLES
+==================================== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
-  --primary: #ffffff;
-  --secondary: #000000;
-  --light: #f9f9f9;
-  --dark: #001a0f;
-  --text: #222;
+  --primary-blue: #000000; /* A strong, modern blue for buttons and accents */
+  --dark-text: #1a202c;     /* A softer, more professional black for text */
+  --body-text: #4a5568;     /* A dark gray for paragraphs */
+  --light-bg: #f7fafc;      /* A very light gray for section backgrounds */
+  --white: #ffffff;
+  --border-color: #e2e8f0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
   font-family: 'Poppins', sans-serif;
-  color: var(--text);
-  background: #fff;
-  line-height: 1.6;
-  scroll-behavior: smooth;
+  color: var(--body-text);
+  background: var(--white);
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .container {
   width: 90%;
-  max-width: 1100px;
+  max-width: 1140px;
   margin: 0 auto;
 }
 
-/* ========== HEADER ========== */
+/* =================================
+   2. REUSABLE COMPONENTS
+==================================== */
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.btn-primary {
+  background: var(--primary-blue);
+  color: var(--white);
+}
+.btn-primary:hover {
+  background: #0045d6;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 82, 255, 0.2);
+}
+
+.btn-secondary {
+  background: transparent; /* --- MODIFIED --- Changed for hero section */
+  color: var(--white);
+  border: 2px solid var(--white);
+}
+.btn-secondary:hover {
+  background: var(--white);
+  color: var(--primary-blue);
+  transform: translateY(-3px);
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.section-title {
+  font-size: 2.5rem;
+  color: var(--dark-text);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.section-subtitle {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =================================
+   3. HEADER & NAVIGATION
+==================================== */
 .site-header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
   z-index: 1000;
-  transition: all 0.3s ease;
+  padding: 1rem 0;
+  background: transparent;
+  transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
 }
 
 .site-header.scrolled {
-  background: #fff;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  padding: 0.75rem 0;
 }
 
 .header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0;
 }
 
 .logo {
-  width: 130px;
+  width: 120px;
+  height: auto;
 }
 
-/* ========== NAVIGATION ========== */
-.nav-list {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-list li a {
-  text-decoration: none;
-  color: var(--dark);
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-
-.nav-list li a:hover,
-.nav-list li a.active {
-  color: var(--secondary);
-}
-
-/* ========== HAMBURGER ========== */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 26px;
-  height: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  right: 20px; /* ✅ move to right side */
-}
-
-.hamburger span {
-  height: 3px;
-  width: 100%;
-  background: var(--dark);
-  border-radius: 5px;
-  transition: all 0.3s ease;
-}
-
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translateY(8px);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-8px);
-}
-
-/* ========== MOBILE MENU ========== */
-@media (max-width: 768px) {
-  .nav-list {
-    display: none;
-    flex-direction: column;
-    background: #fff;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: 220px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    border-radius: 6px;
-    overflow: hidden;
-  }
-
-  .nav-list.open {
-    display: flex;
-  }
-
-  .nav-list li {
-    text-align: left;
-    padding: 12px 20px;
-  }
-
-  .nav-list li a {
-    color: var(--dark);
-    font-size: 15px;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-}
-
-/* ========== HERO SECTION ========== */
-.hero {
-  position: relative;
-  min-height: 90vh;
-  background: url('../images/header.jpeg') center/cover no-repeat;
-  color: white;
+.main-nav {
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 160px 20px 100px;
-  overflow: hidden;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.65);
-  z-index: 0;
+.nav-list {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  align-items: center;
 }
 
-.hero-title, .hero-sub, .btn {
+/* --- MODIFIED --- Navigation links are now white by default for the hero image */
+.nav-list a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
   position: relative;
-  z-index: 1;
+  padding-bottom: 5px;
+  transition: color 0.3s ease;
+}
+.nav-list a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--primary-blue);
+  transition: width 0.3s ease;
+}
+.nav-list a:hover::after,
+.nav-list a.active::after {
+  width: 100%;
+}
+/* --- MODIFIED --- When header is scrolled, links become dark */
+.site-header.scrolled .nav-list a {
+  color: var(--dark-text);
+}
+
+
+.hamburger {
+  display: none;
+  z-index: 1001;
+}
+/* --- MODIFIED --- Hamburger is now white by default */
+.hamburger span {
+    width: 100%; height: 3px; background: var(--white);
+    border-radius: 5px; transition: all 0.3s ease-in-out;
+}
+/* --- MODIFIED --- When header is scrolled, hamburger becomes dark */
+.site-header.scrolled .hamburger span {
+    background: var(--dark-text);
+}
+
+
+/* =================================
+   4. HERO SECTION
+==================================== */
+/* --- MODIFIED --- Added background image and overlay */
+.hero {
+  position: relative;
+  padding: 180px 0 120px 0;
+  text-align: center;
+  color: var(--white);
+  /* IMPORTANT: Replace 'header.jpeg' with your desired background image path */
+  background: url('../images/header.jpeg') center center/cover no-repeat;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0; /* top, right, bottom, left = 0 */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(10, 20, 40, 0.9));
+}
+
+/* --- MODIFIED --- Content is placed above the overlay */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 750px;
+  margin: 0 auto;
+  animation: fadeInUp 0.8s ease forwards;
 }
 
 .hero-title {
-  font-size: 2.8rem;
+  font-size: 3.5rem;
   font-weight: 700;
+  color: var(--white); /* Text color changed to white */
+  line-height: 1.2;
   margin-bottom: 1rem;
 }
 
 .hero-sub {
   font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: #f0f0f0;
+  margin-bottom: 2.5rem;
+  color: rgba(255, 255, 255, 0.9); /* Text color changed to light white */
 }
 
-.btn {
-  display: inline-block;
-  padding: 12px 25px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.btn-filled {
-  background: var(--secondary);
-  color: white;
-}
-.btn-filled:hover {
-  background: #333;
-}
-
-.btn-outline {
-  border: 2px solid white;
-  color: white;
-}
-.btn-outline:hover {
-  background: white;
-  color: var(--secondary);
-}
-
-/* ========== MOCKUPS SECTION ========== */
+/* =================================
+   5. MOCKUPS SECTION
+==================================== */
 .mockups {
-  text-align: center;
-  background: #000000;
-  padding: 80px 0;
+  padding: 0;
+  margin-top: -100px; /* Pulls the image up a bit more */
+  position: relative; /* Ensure it's above the hero */
+  z-index: 5;
 }
-.mockups img {
-  width: 80%;
-  max-width: 600px;
+.phones-img {
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeInUp 1s 0.2s ease forwards;
+  opacity: 0;
 }
 
-/* ========== HOW IT WORKS SECTION ========== */
-.how {
+/* =================================
+   6. HOW IT WORKS
+==================================== */
+.how-it-works {
   padding: 100px 0;
-  background: #fff;
-  text-align: center;
+  background: var(--white);
 }
 
-.section-title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--secondary);
-  margin-bottom: 50px;
-}
-
-.steps {
+.steps-grid {
   display: flex;
   flex-direction: column;
-  gap: 70px;
+  gap: 5rem;
 }
 
 .step {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 50px;
-  flex-wrap: wrap;
+  display: flex; align-items: center; gap: 4rem;
+  animation: fadeInUp 1s ease forwards; opacity: 0;
 }
+.step:nth-child(2) { animation-delay: 0.2s; }
+.step:nth-child(3) { animation-delay: 0.4s; }
 
+.step-img-wrapper {
+  flex: 1; background-color: var(--light-bg);
+  border-radius: 20px; padding: 2rem;
+}
+.step-img-wrapper img { border-radius: 12px; }
+.step-content { flex: 1; }
 .step-content h3 {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: var(--dark);
+  font-size: 1.8rem; font-weight: 600;
+  color: var(--dark-text); margin-bottom: 0.75rem;
 }
 
-.step-content p {
-  font-size: 1rem;
-  color: #555;
-}
-
-/* ========== DOWNLOAD CTA SECTION ========== */
+/* =================================
+   7. DOWNLOAD CTA
+==================================== */
+/* --- MODIFIED --- Added background image and overlay */
 .download-cta {
   position: relative;
-  background: url('../images/footer.jpeg') center/cover no-repeat;
+  padding: 100px 0;
+  color: var(--white);
   text-align: center;
-  padding: 120px 20px;
-  color: #fff;
-  overflow: hidden;
+  /* IMPORTANT: Replace 'footer.jpeg' with your desired background image path */
+  background: url('../images/footer.jpeg') center center/cover fixed no-repeat;
 }
-
 .download-cta::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(20,20,20,0.7));
-  z-index: 0;
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 20, 40, 0.9);
 }
-
-.download-cta h2,
-.download-cta p,
-.download-cta .btn {
+.cta-inner {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  max-width: 650px;
+  margin: 0 auto;
 }
-
 .download-cta h2 {
-  font-size: 2.4rem;
-  margin-bottom: 10px;
+  font-size: 2.5rem;
   font-weight: 700;
+  margin-bottom: 1rem;
 }
-
 .download-cta p {
-  font-size: 1.1rem;
-  margin-bottom: 30px;
-  color: #e0e0e0;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+}
+/* Re-styling buttons for dark background */
+.download-cta .btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.download-cta .btn-secondary:hover {
+  background: var(--white);
+  color: var(--dark-text);
+  border-color: var(--white);
 }
 
-/* ========== FOOTER ========== */
+/* =================================
+   8. FOOTER
+==================================== */
 .site-footer {
-  background: #ffffff;
-  color: #000000;
-  padding: 60px 20px 30px;
-  text-align: left;
+  background: var(--light-bg);
+  padding: 80px 0 30px;
+  color: var(--body-text);
+}
+/* ... (Rest of footer CSS is unchanged) ... */
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; padding-bottom: 3rem; }
+.footer-col.about-col { padding-right: 2rem; }
+.footer-logo { width: 120px; margin-bottom: 1rem; }
+.footer-col h4 { color: var(--dark-text); font-size: 1.1rem; margin-bottom: 1rem; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.footer-col a { color: var(--body-text); text-decoration: none; transition: color 0.3s ease; }
+.footer-col a:hover { color: var(--primary-blue); }
+.socials { display: flex; gap: 1rem; }
+.socials img { width: 24px; opacity: 0.7; transition: opacity 0.3s ease, transform 0.3s ease; }
+.socials a:hover img { opacity: 1; transform: scale(1.1); }
+.footer-bottom { text-align: center; border-top: 1px solid var(--border-color); padding-top: 2rem; font-size: 0.9rem; }
+
+/* =================================
+   9. RESPONSIVE & MOBILE MENU
+==================================== */
+@media (max-width: 992px) {
+  .step { gap: 2rem; }
+  .step-content h3 { font-size: 1.5rem; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-.footer-top {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 40px;
-  margin-bottom: 40px;
-}
+@media (max-width: 768px) {
+  body.nav-open { overflow: hidden; }
+  .nav-list {
+    position: fixed; top: 0; right: 0; width: 100%; height: 100%;
+    background: var(--white); flex-direction: column; justify-content: center;
+    align-items: center; gap: 2rem; transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  body.nav-open .nav-list { transform: translateX(0); }
+  .nav-list a { font-size: 1.5rem; color: var(--dark-text); /* Ensure mobile menu links are dark */ }
+  .main-nav { display: block; }
+  .hamburger {
+    display: flex; flex-direction: column; justify-content: space-around;
+    width: 28px; height: 22px; background: none; border: none;
+    cursor: pointer; padding: 0;
+  }
+  body.nav-open .hamburger span { background: var(--dark-text); /* Keep hamburger dark when menu is open */ }
+  body.nav-open .hamburger span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+  body.nav-open .hamburger span:nth-child(2) { opacity: 0; }
+  body.nav-open .hamburger span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
 
-.footer-logo {
-  width: 120px;
-  margin-bottom: 10px;
-}
-
-.footer-col h4 {
-  color: rgb(0, 0, 0);
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-}
-
-.footer-col ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-col ul li {
-  margin-bottom: 8px;
-}
-
-.footer-col ul a {
-  color: #000000;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.footer-col ul a:hover {
-  color: var(--secondary);
-}
-
-.footer-bottom {
-  text-align: center;
-  font-size: 0.9rem;
-  color: #000000;
-  border-top: 1px solid #333;
-  padding-top: 20px;
+  .hero { padding: 140px 0 80px; }
+  .hero-title { font-size: 2.5rem; }
+  .hero-sub { font-size: 1.1rem; }
+  .mockups { margin-top: -60px; }
+  .section-title { font-size: 2rem; }
+  .step, .step.reverse { flex-direction: column; text-align: center; }
+  .step.reverse .step-img-wrapper { order: 0; }
+  .footer-grid { grid-template-columns: 1fr; text-align: center; }
+  .footer-col.about-col { padding-right: 0; }
+  .footer-col ul, .socials { justify-content: center; }
 }

@@ -138,8 +138,9 @@ nav ul li a.active {
 }
 
 .faq-item.active p {
-  max-height: 300px;
+  max-height: 300px; /* Adjust if your answers are longer */
   opacity: 1;
+  padding-top: 0.5rem; /* Add some space when opened */
 }
 
 /* ===== Footer ===== */
@@ -150,4 +151,85 @@ nav ul li a.active {
   color: #bbb;
   font-size: 0.9rem;
   letter-spacing: 0.5px;
+}
+
+/* =================================
+   NEW: HAMBURGER & MOBILE MENU STYLES
+==================================== */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 28px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001; /* Make sure it's above other elements */
+}
+.menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+/* Hamburger animation to 'X' */
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+
+/* =================================
+   NEW: MOBILE RESPONSIVE CODE
+==================================== */
+@media (max-width: 768px) {
+    /* --- Header & Nav --- */
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        background: rgba(0, 0, 0, 0.95);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Full screen menu */
+        transform: translateX(-100%);
+        transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    nav ul.open {
+        transform: translateX(0);
+    }
+    nav ul li a {
+        font-size: 1.5rem; /* Make links bigger for mobile */
+    }
+
+    .menu-toggle {
+        display: flex; /* Show hamburger on mobile */
+    }
+
+    /* --- Content Adjustments --- */
+    .faq-header {
+        padding: 7rem 1rem 2rem; /* Reduce top padding */
+    }
+    .faq-header h1 {
+        font-size: 2.2rem; /* Smaller title on mobile */
+    }
+    .faq-container {
+        padding: 1.5rem; /* Reduce padding on mobile */
+        margin: 1rem auto 3rem;
+    }
+    .faq-item h2 {
+        font-size: 1.1rem; /* Slightly smaller question text */
+    }
 }

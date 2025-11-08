@@ -12,6 +12,13 @@ body {
   line-height: 1.7;
 }
 
+/* Reusable Container */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
 /* Header */
 .site-header {
   position: fixed;
@@ -19,38 +26,32 @@ body {
   width: 100%;
   background: rgba(10, 10, 10, 0.8);
   backdrop-filter: blur(10px);
-  padding: 15px 40px;
+  padding: 1rem 0;
   z-index: 100;
   transition: 0.3s ease;
 }
-
 .site-header.scrolled {
   background: rgba(10, 10, 10, 0.95);
 }
-
 .header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .logo {
   height: 50px;
 }
-
 nav ul {
   list-style: none;
   display: flex;
   gap: 25px;
 }
-
 nav a {
   text-decoration: none;
   color: #f0f0f0;
   font-weight: 500;
   transition: color 0.3s;
 }
-
 nav a:hover,
 nav a.active {
   color: #ffffff;
@@ -58,41 +59,26 @@ nav a.active {
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
-    url("images/hero-bg.jpg") center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
+    url("../images/header.jpeg") center/cover no-repeat; /* Using a more generic background image */
   text-align: center;
   padding: 160px 20px 100px;
   color: white;
 }
-
 .hero h1 {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 15px;
 }
-
 .hero p {
   color: #ccc;
   font-size: 1.1rem;
 }
 
 /* Policy Section */
-.policy {
-  background: url("images/terms-bg.jpg") center/cover fixed no-repeat;
-  padding: 80px 20px;
-  position: relative;
-}
-
-.policy::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(10, 10, 10, 0.85);
-}
-
-.policy > * {
-  position: relative;
-  z-index: 2;
+.policy-section {
+  padding: 80px 0;
+  background-color: #0a0a0a;
 }
 
 .policy-card {
@@ -101,49 +87,35 @@ nav a.active {
   padding: 30px;
   border-radius: 12px;
   margin-bottom: 30px;
-  max-width: 900px;
-  margin-inline: auto;
+  max-width: 800px; /* Optimal reading width */
+  margin-left: auto;
+  margin-right: auto;
   transform: translateY(30px);
   opacity: 0;
   transition: all 0.6s ease;
 }
-
 .policy-card.visible {
   transform: translateY(0);
   opacity: 1;
 }
-
 .policy-card h3 {
   color: #ffffff;
   margin-bottom: 10px;
   font-size: 1.3rem;
 }
-
 .policy-card p,
 .policy-card li {
   color: #ddd;
   font-size: 1rem;
 }
-
 .policy-card ul {
   padding-left: 20px;
   list-style: disc;
-  margin-bottom: 10px;
+  margin: 1rem 0;
 }
-
-.policy p a {
+.policy-card a {
   color: #ffffff;
-  text-decoration: none;
-}
-
-.policy p a:hover {
   text-decoration: underline;
-}
-
-.policy p:last-child {
-  text-align: center;
-  color: #aaa;
-  margin-top: 40px;
 }
 
 /* Footer */
@@ -153,59 +125,78 @@ nav a.active {
   padding: 60px 20px;
   border-top: 1px solid #111;
 }
-
 .footer h2 {
   color: white;
   font-size: 1.8rem;
   margin-bottom: 20px;
 }
-
+.download-row {
+    margin-bottom: 1rem;
+}
 .download-row img {
-  height: 45px;
+  height: 150px;
   margin: 0 10px;
   cursor: pointer;
+  border-radius: 8px;
   transition: transform 0.3s;
 }
-
 .download-row img:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
-
 .socials img {
-  height: 28px;
+  height: 44px;
   margin: 15px 8px;
   opacity: 0.7;
   transition: opacity 0.3s;
 }
-
 .socials img:hover {
   opacity: 1;
 }
 
-.footer a {
-  color: #ffffff;
-  text-decoration: none;
-  margin: 0 8px;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  nav ul {
+/* =================================
+   NEW: HAMBURGER & MOBILE MENU STYLES
+==================================== */
+.menu-toggle {
+    display: none;
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-  }
+    justify-content: space-around;
+    width: 28px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+.menu-toggle span {
+    width: 100%; height: 3px; background: #fff;
+    border-radius: 5px; transition: all 0.3s ease-in-out;
+}
+.menu-toggle.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) { transform: translateY(-10px) rotate(-45deg); }
 
-  .hero h1 {
-    font-size: 2rem;
-  }
 
-  .policy-card {
-    padding: 20px;
+/* =================================
+   NEW: MOBILE RESPONSIVE CODE
+==================================== */
+@media (max-width: 768px) {
+  /* --- Header & Nav --- */
+  nav ul {
+      flex-direction: column; justify-content: center; align-items: center;
+      gap: 2rem; background: rgba(0, 0, 0, 0.98);
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100vh;
+      transform: translateX(-100%);
+      transition: transform 0.4s ease;
   }
+  nav ul.open { transform: translateX(0); }
+  nav ul li a { font-size: 1.5rem; }
+  .menu-toggle { display: flex; }
+
+  /* --- Content Adjustments --- */
+  .hero { padding: 120px 20px 60px; }
+  .hero h1 { font-size: 2rem; }
+
+  .policy-section { padding: 60px 0; }
+  .policy-card { padding: 20px; }
 }
